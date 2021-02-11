@@ -1,5 +1,12 @@
 #include "stdafx.h"
 
+Offsets offsets;
+Triggerbot triggerbot;
+Radar radar;
+Process process;
+Memory memory;
+
+
 bool is_in_game()
 {
 	const auto& engine_pointer = offsets.engine_base + offsets.client_state;

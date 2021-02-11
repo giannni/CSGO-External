@@ -34,8 +34,8 @@ extern Offsets offsets;
 // our process
 struct Process
 {
-    uintptr_t pid = 0; // pid of the process
-    HANDLE process_handle = 0; // our process
+    uintptr_t pid; // pid of the process
+    HANDLE process_handle; // our process
 };
 extern Process process;
 
