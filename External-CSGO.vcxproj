@@ -19,17 +19,23 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="aimbot.cpp" />
+    <ClCompile Include="entity.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="memory.cpp" />
     <ClCompile Include="radar.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="triggerbot.cpp" />
+    <ClCompile Include="vector.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="aimbot.h" />
+    <ClInclude Include="entity.h" />
     <ClInclude Include="memory.h" />
     <ClInclude Include="radar.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="triggerbot.h" />
+    <ClInclude Include="vector.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

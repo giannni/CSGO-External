@@ -2,9 +2,11 @@
 
 Triggerbot triggerbot;
 Radar radar;
+Aimbot aimbot;
 Process process;
 Memory memory;
 Offsets offsets;
+Entity entity;
 
 int main()
 {
@@ -19,22 +21,23 @@ int main()
 		// get the module engine.dll, could change but not very likely
 		offsets.engine_base = memory.GetModule(L"engine.dll");
 
+		// get our local player pointer
 		offsets.local = memory.read<uintptr_t>(offsets.client_base + offsets.m_Local);
 
-		if (offsets.local)
+		if (entity.is_ingame())
 		{
-			const auto& local_team = memory.read<uintptr_t>((uintptr_t)offsets.local + offsets.m_iTeamNum);
-		}
+			// infinite loop to keep updating our entity data and run our functions
+			while (!(GetAsyncKeyState(VK_F10) & 0x01))
+			{
+				triggerbot.triggerbot();
 
-		// infinite loop to keep updating our entity data and run our functions
-		while (!(GetAsyncKeyState(VK_F10) & 0x01))
-		{
-			triggerbot.triggerbot();
+				radar.radar();
 
-			radar.radar();
+				aimbot.aimbot();
 
-			// sleep for 1 ms to give us better performance overall
-			std::this_thread::sleep_for(std::chrono::milliseconds(1));
+				// sleep for 1 ms to give us better performance overall
+				std::this_thread::sleep_for(std::chrono::milliseconds(1));
+			}
 		}
 	}
 	else

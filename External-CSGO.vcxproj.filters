@@ -6,11 +6,17 @@
     <ClCompile Include="radar.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="memory.cpp" />
+    <ClCompile Include="aimbot.cpp" />
+    <ClCompile Include="entity.cpp" />
+    <ClCompile Include="vector.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="triggerbot.h" />
     <ClInclude Include="radar.h" />
     <ClInclude Include="memory.h" />
+    <ClInclude Include="aimbot.h" />
+    <ClInclude Include="entity.h" />
+    <ClInclude Include="vector.h" />
   </ItemGroup>
 </Project>
