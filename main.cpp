@@ -17,12 +17,19 @@ int main()
 	{
 		// get the module client.dll, could change but not very likely
 		offsets.client_base = memory.GetModule(L"client.dll");
+		printf("Client: 0x%" PRIXPTR "\n", (uintptr_t)offsets.client_base);
 
 		// get the module engine.dll, could change but not very likely
 		offsets.engine_base = memory.GetModule(L"engine.dll");
+		printf("Engine: 0x%" PRIXPTR "\n", (uintptr_t)offsets.engine_base);
 
 		// get our local player pointer
 		offsets.local = memory.read<uintptr_t>(offsets.client_base + offsets.m_Local);
+		printf("Local: 0x%" PRIXPTR "\n", (uintptr_t)offsets.local);
+
+		// get our local player team pointer
+		offsets.local_team = memory.read<uintptr_t>(offsets.local + offsets.m_iTeamNum);
+		printf("Local Team: 0x%" PRIXPTR "\n", (uintptr_t)offsets.local_team);
 
 		if (entity.is_ingame())
 		{

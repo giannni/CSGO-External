@@ -6,7 +6,7 @@ void Radar::radar()
 	for (int i = 0; i <= 64; i++)
 	{
 		// get our entity
-		const auto& enemy = memory.read<uintptr_t>(offsets.client_base + offsets.dwEntityList + (i * 0x10));
+		auto enemy = entity.get_entbase(i);
 
 		// check if the entity is spotted or not
 		bool is_spotted = memory.read<bool>(enemy + offsets.m_bSpotted);

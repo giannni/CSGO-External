@@ -9,6 +9,8 @@ struct Entity
 	uintptr_t get_health(uintptr_t entity);
 	uintptr_t is_dormant(uintptr_t entity);
 	uintptr_t get_crosshairid();
+	uintptr_t get_entity_incross();
+	void force_attack();
 	D3DXVECTOR3 get_local_eyepos();
 	D3DXVECTOR3 get_local_pos();
 	D3DXMATRIX get_local_matrix();

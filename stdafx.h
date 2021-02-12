@@ -6,6 +6,7 @@
 #include <thread>
 #include <cmath>
 #include <intrin.h>
+#include <inttypes.h>
 #include <d3d9.h>
 #include <d3dx9.h>
 #pragma comment(lib, "d3d9.lib")

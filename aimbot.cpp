@@ -40,8 +40,8 @@ void Aimbot::aim_at_target(uintptr_t player, int smooth, int bone)
 
 void Aimbot::aimbot()
 {
-	if (GetAsyncKeyState(VK_MENU))
+	if (GetAsyncKeyState(VK_LBUTTON))
 	{
-		aim_at_target(get_closest_target(30), 10, 8);
+		aim_at_target(get_closest_target(100), 20, 8);
 	}
 }

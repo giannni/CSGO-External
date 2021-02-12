@@ -39,6 +39,18 @@ uintptr_t Entity::get_crosshairid()
 	return memory.read<uintptr_t>(offsets.local + offsets.m_iCrosshairId);
 }
 
+uintptr_t Entity::get_entity_incross()
+{
+	return memory.read<uintptr_t>(offsets.client_base + offsets.dwEntityList + (entity.get_crosshairid() - 1 * 0x10));
+}
+
+void Entity::force_attack()
+{
+	memory.write<uintptr_t>(offsets.client_base + offsets.dwForceAttack, 5);
+	Sleep(50);
+	memory.write<uintptr_t>(offsets.client_base + offsets.dwForceAttack, 4);
+}
+
 D3DXVECTOR3 Entity::get_local_eyepos()
 {
 	D3DXVECTOR3 local_pos = entity.get_local_pos();

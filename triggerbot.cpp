@@ -3,15 +3,21 @@
 void Triggerbot::triggerbot()
 {
 	// get our local player crosshair id
-	const auto& crosshair_id = entity.get_crosshairid();
+	auto crosshair_id = entity.get_crosshairid();
+	//printf("Crosshair id: 0x%" PRIXPTR "\n", (uintptr_t)crosshair_id);
 
 	// get our entity in the crosshair
-	const auto& entity_incross = memory.read<uintptr_t>(offsets.client_base + offsets.dwEntityList + ((crosshair_id - 1) * 0x10));
+	auto entity_incross = entity.get_entity_incross();
+	//printf("Entity Incross: 0x%" PRIXPTR "\n", (uintptr_t)entity_incross);
+
+	//get our entity team from crosshair
+	auto entity_team = entity.get_team(entity_incross);
+	//printf("Entity Team: 0x%" PRIXPTR "\n", (uintptr_t)entity_team);
 
 	// check if crosshair is within the players
-	if (crosshair_id <= 64 && crosshair_id > 0 && entity.is_valid(entity_incross))
+	if (crosshair_id > 0 && crosshair_id <= 64)
 	{
-		if (GetAsyncKeyState(VK_XBUTTON1) & 0x8000)
+		if (offsets.local_team != entity_team && entity.is_valid(entity_incross))
 		{
 			// send mouse left down
 			mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
