@@ -19,14 +19,17 @@ void Triggerbot::triggerbot()
 	{
 		if (offsets.local_team != entity_team && entity.is_valid(entity_incross))
 		{
-			// send mouse left down
-			mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
+			if (GetAsyncKeyState(VK_XBUTTON2))
+			{
+				// send mouse left down
+				mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
 
-			// delay since we dont want full auto weapons to shoot super fast
-			std::this_thread::sleep_for(std::chrono::milliseconds(10));
+				// delay since we dont want full auto weapons to shoot super fast
+				std::this_thread::sleep_for(std::chrono::milliseconds(10));
 
-			// send mouse left up
-			mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
+				// send mouse left up
+				mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
+			}
 		}
 	}
 }
