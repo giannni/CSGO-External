@@ -10,5 +10,5 @@ External CSGO Cheat written in C++
 ```
 - Radar
 - Crosshair Triggerbot
-- Aimbot with smoothing and fov
+- Aimbot with smoothing and fov (WIP)
 ```
