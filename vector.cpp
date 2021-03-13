@@ -4,24 +4,8 @@
 
 D3DXVECTOR3 ClampAngles(D3DXVECTOR3 angle)
 {
-    while (angle.x < -180.0f)
-        angle.x += 360.0f;
-
-    while (angle.x > 180.0f)
-        angle.x -= 360.0f;
-
-    if (angle.x > 89.0f)
-        angle.x = 89.0f;
-
-    if (angle.x < -89.0f)
-        angle.x = -89.0f;
-
-    while (angle.y < -180.0f)
-        angle.y += 360.0f;
-
-    while (angle.y > 180.0f)
-        angle.y -= 360.0f;
-
+    angle.x = std::clamp(angle.x, -89.0f, 89.0f);
+    angle.y = std::clamp(angle.y, -180.0f, 180.0f);
     angle.z = 0.0f;
 
     return angle;
